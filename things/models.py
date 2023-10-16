@@ -5,13 +5,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Thing(Model):
     name = models.CharField(
-        unique=True,
         max_length=30,
+        unique=True,
         blank=False)
-    description = models.CharField(
+    description = models.TextField(
+        max_length=120,
         unique=False,
-        blank=True,
-        max_length=120)
+        blank=True)
+        
     quantity = models.IntegerField(
         unique=False,
         validators=[MaxValueValidator(100), MinValueValidator(0)]
